@@ -22,6 +22,14 @@ export async function login(body) {
     })
 }
 
+export async function logout() {
+    return await request({
+        url: api_urls.user_login,
+        params: {},
+        method: 'post',
+    })
+}
+
 export async function getUserInfo() {
     return await request({
         url: api_urls.get_user_info,

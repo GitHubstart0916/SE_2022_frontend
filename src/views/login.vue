@@ -1,11 +1,11 @@
 <template>
-  <div class="all">
+  <v-app class="all">
     <!--    <i class="fab fa-accessible-icon"></i>-->
     <v-row justify="center" align="center">
       <v-col md = "6">
         <v-card elevation="4" outlined shaped>
           <p class="text-center font-italic" style="margin-top: 2rem; font-size:25px">
-            Electric
+            Electric123123
           </p>
 
           <v-form class="form">
@@ -76,7 +76,7 @@
 
     </v-row>
 
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -102,15 +102,19 @@ export default {
         username: vm.username,
         password: vm.password,
       });
-      // console.log(res)
-      if (res.data.token) {
-        this.$store.commit('setToken', res.data.token)
-        let user = await getUserInfo()
-        this.$store.commit('setUser', user.data)
-        await this.$router.push({path: '/main'})
-      } else {
-        alert(res.data.message)
+      console.log('yes')
+      if (res.data.code == 0) {
+        alert('success')
       }
+      //TODO: insert token
+      // if (res.data.token) {
+      //   this.$store.commit('setToken', res.data.token)
+      //   let user = await getUserInfo()
+      //   this.$store.commit('setUser', user.data)
+      //   await this.$router.push({path: '/main'})
+      // } else {
+      //   alert(res.data.message)
+      // }
     },
 
     async reserve() {

@@ -4,12 +4,6 @@ import store from '@/store/store'
 
 axios.defaults.baseURL = 'api'
 
-//@ request options need:
-//     url
-//     method
-//     params
-//     body
-
 export async function request(options) {
     let response
     let Token = store.getters.TokenStored
@@ -28,7 +22,7 @@ export async function request(options) {
         console.log(e)
         throw new Error(e)
     }
-    if (response.status != 200) {
+    if (response.status !== 200) {
         console.log('has error')
         switch(response.status){
             case 400:
@@ -47,7 +41,7 @@ export async function request(options) {
     return response
 }
 
-const errorHandler = (error, vm, info) => {
+const errorHandler = (error) => {
     console.log('error handler')
     console.log(error)
 }
