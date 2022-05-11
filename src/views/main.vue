@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    hello
+    <h1>
+      CI-Test-Pass
+    </h1>
   </v-app>
 </template>
 
