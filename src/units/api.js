@@ -1,22 +1,26 @@
 import axios from 'axios'
 import Vue from 'vue'
 import store from '@/store/store'
+import {toKey} from "core-js/internals/reflect-metadata";
 
 axios.defaults.baseURL = 'api'
 
 export async function request(options) {
     let response
     let Token = store.getters.TokenStored
+    if (Token == null) {
+        Token = ""
+    }
+    console.log(Token)
     try {
         response = await axios(options.url, {
             method: options.method,
             params: options.params,
             data: options.body,
-            onUploadProgress: options.onUploadProgress,
+            responseType: options.responseType,
             headers: {
                 Token: Token
             },
-            validateStatus: () => true
         });
     } catch (e) {
         console.log(e)

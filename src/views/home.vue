@@ -37,13 +37,13 @@
             <v-btn x-large app collapse-on-scroll to="/login"> 登陆 </v-btn>
           </v-col>
           <v-col cols="1">
-            <v-btn x-large app collapse-on-scroll @click="myLogout" to="/mainPage"> 注销 </v-btn>
+            <v-btn x-large app collapse-on-scroll @click="myLogout" to="/login"> 注销 </v-btn>
           </v-col>
           <v-col cols="2">
             <v-card color="#385F73" style="cursor:pointer">
               <v-card-subtitle>
                 <v-icon>mdi-account</v-icon>
-                {{ $store.getters.Name ? $store.getters.Name : '您尚未登陆' }}
+                {{ $store.getters.TokenStored ? '已经登录' : '您尚未登陆' }}
               </v-card-subtitle>
             </v-card>
           </v-col>

@@ -106,15 +106,15 @@ export default {
       if (res.data.code == 0) {
         alert('success')
       }
-      //TODO: insert token
-      // if (res.data.token) {
-      //   this.$store.commit('setToken', res.data.token)
-      //   let user = await getUserInfo()
-      //   this.$store.commit('setUser', user.data)
-      //   await this.$router.push({path: '/main'})
-      // } else {
-      //   alert(res.data.message)
-      // }
+      if (res.data.token) {
+        this.$store.commit('setToken', res.data.token)
+        //TODO: 完善getUserInfo
+        // let user = await getUserInfo()
+        // this.$store.commit('setUser', user.data)
+        await this.$router.push({path: '/main'})
+      } else {
+        alert(res.data.message)
+      }
     },
 
     async reserve() {
