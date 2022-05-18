@@ -1,6 +1,7 @@
 const user = {
     state: {
-        token: sessionStorage.getItem('token'),
+        //token: sessionStorage.getItem('token'),
+        token: localStorage.getItem('token'),
         userInfo: {
             username: sessionStorage.getItem('username'),
             id: sessionStorage.getItem('id'),
@@ -15,17 +16,19 @@ const user = {
         setToken (state, tokenIn) {
             state.token = tokenIn
             sessionStorage.setItem('token', tokenIn)
+            localStorage.setItem('token', tokenIn)
         },
         logout (state) {
             state.token = ''
             state.userInfo = {
                 username: '',
-                nickname: '',
                 id: null,
             }
             sessionStorage.removeItem('token')
             sessionStorage.removeItem('username')
             sessionStorage.removeItem('id')
+
+            localStorage.removeItem('token')
         },
     },
     getters: {
