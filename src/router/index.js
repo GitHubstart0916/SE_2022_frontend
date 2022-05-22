@@ -4,6 +4,7 @@ import App from '@/App.vue'
 import main from "@/views/main"
 import register from "@/views/register"
 import login from "@/views/login"
+import forget_pswd from "@/views/forget_pswd";
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
                 path: 'register',
                 name: 'register',
                 component: register
+            },
+            {
+                path: 'forget_pswd',
+                name: 'forget_pswd',
+                component: forget_pswd
             },
         ]
     },

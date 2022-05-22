@@ -51,7 +51,7 @@
                   rounded
                   text
                   color="deep-purple lighten-2"
-                  @click="reserve"
+                  to="/forget_pswd"
               >
                 忘记密码
               </v-btn>

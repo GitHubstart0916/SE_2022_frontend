@@ -5,11 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "serve-dev": "env VUE_APP_API_URL=http://101.43.145.90:8080 VERSION=DevServe vue-cli-service serve"
+    "serve-dev": "env VUE_APP_API_URL=http://101.43.145.90:8080 VERSION=DevServe vue-cli-service serve",
+    "serve-test": "cross-env VUE_APP_API_URL=http://101.43.145.90:8080 VERSION=DevServe vue-cli-service serve"
   },
   "dependencies": {
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "cross-env": "^7.0.3",
     "js-cookie": "^3.0.1",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",

@@ -38,3 +38,9 @@ export async function getUserInfo() {
         method: 'get',
     })
 }
+
+export async function forgetPswd(body) {
+    return await request({
+        // TODO: 忘记密码的后端交互接口
+    })
+}

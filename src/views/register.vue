@@ -65,7 +65,7 @@
                 <v-card-title>
 
                 </v-card-title>
-                <v-progress-linear v-model="lineModel" @change="onChange">
+                <v-progress-linear v-model="lineModel" @change="checkStrength">
                 </v-progress-linear>
               </v-col>
             </v-row>
@@ -193,7 +193,7 @@ export default {
       this.$refs.menu.save(date)
     },
 
-    onChange() {
+    checkStrength() {
       this.lineModel = this.password.length===0?0:this.password.length<7?30: this.password.length < 15?60:100
     },
 
