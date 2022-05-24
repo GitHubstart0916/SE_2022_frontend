@@ -76,6 +76,8 @@
 </template>
 
 <script>
+import {get_verification_code} from "@/api/user";
+
 export default {
   name: "forget_pswd",
 
@@ -102,7 +104,14 @@ export default {
         return
       }
       // TODO: 向后端发送用户名，请求发送验证码
-
+      let res = get_verification_code({
+        UserName: this.username,
+      })
+      if (res.data.code == 0) {
+        alert("success");
+        await this.$router.push({path: '/login'});
+      }
+      alert("你在演我")
     },
 
     async forgetPassword() {
@@ -123,8 +132,9 @@ export default {
         alert("请输入验证码");
         return
       }
-      let res = await forgetPswd({
-        // TODO: 后端数据需求格式
+      let res = await reset_password({
+        Token: vm.veri_code,
+        NewPassword: vm.new_pswd,
       })
       // TODO: 向后端打包所有信息并发送
     }

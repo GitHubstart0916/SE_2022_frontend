@@ -5,6 +5,7 @@ import main from "@/views/main"
 import register from "@/views/register"
 import login from "@/views/login"
 import forget_pswd from "@/views/forget_pswd";
+import user_info from "@/views/user_info";
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,11 @@ const routes = [
                 path: 'forget_pswd',
                 name: 'forget_pswd',
                 component: forget_pswd
+            },
+            {
+                path: 'user_info',
+                name: 'user_info',
+                component: user_info
             },
         ]
     },
