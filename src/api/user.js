@@ -4,6 +4,7 @@ const api_urls = {
     user_register: 'user/register',
     user_login: '/user/login',
     user_logout: '/user/logout',
+    get_user_id: '/user/get-user_id',
     get_user_info: '/user/get-info',
     forget_password: '/user/forget-password',
     reset_password: '/user/reset-password',
@@ -30,6 +31,14 @@ export async function logout() {
         url: api_urls.user_logout,
         params: {},
         method: 'post',
+    })
+}
+
+export async function getUserID() {
+    return await request({
+        url: api_urls.get_user_id,
+        params: {},
+        method: 'get',
     })
 }
 
