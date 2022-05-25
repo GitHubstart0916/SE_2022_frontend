@@ -21,19 +21,21 @@
 </template>
 
 <script>
-import {getUserInfo} from "@/api/user";
+import {getUserID, getUserInfo} from "@/api/user";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "main",
 
   data() {
-    this.userid = 0
+    return {
+      userid: 0
+    }
   },
 
   methods: {
-    getUsrId() {
-      let res = getUserInfo()
+    async getUsrId() {
+      let res = await getUserID()
       this.userid = res.data.id
     }
   }

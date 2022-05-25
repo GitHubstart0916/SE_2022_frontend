@@ -4,7 +4,7 @@ const api_urls = {
     user_register: 'user/register',
     user_login: '/user/login',
     user_logout: '/user/logout',
-    get_user_id: '/user/get-user_id',
+    get_user_id: '/test/get-user-id',
     get_user_info: '/user/get-info',
     forget_password: '/user/forget-password',
     reset_password: '/user/reset-password',

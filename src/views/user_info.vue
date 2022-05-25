@@ -64,15 +64,15 @@ export default {
     }
   },
 
-  created() {
-    let res = getUserInfo()
-    let user_data = res.data
-    this.username = user_data.username
-    this.nickname = user_data.nickname
-    this.mail = user_data.userEmail
-    this.phone_number = user_data.phone
-    this.birthday = user_data.date
-  }
+  // created() {
+  //   let res = getUserInfo()
+  //   let user_data = res.data
+  //   this.username = user_data.username
+  //   this.nickname = user_data.nickname
+  //   this.mail = user_data.userEmail
+  //   this.phone_number = user_data.phone
+  //   this.birthday = user_data.date
+  // }
 }
 </script>
 
