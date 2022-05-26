@@ -31,7 +31,13 @@
           </v-col>
           <v-spacer></v-spacer>
           <v-col cols="1">
-            <v-btn x-large app collapse-on-scroll to="/test"> 测试 </v-btn>
+            <v-btn x-large app collapse-on-scroll @click="mapBtnClicked"> 地图 </v-btn>
+          </v-col>
+          <v-col cols="1">
+            <v-btn x-large app collapse-on-scroll @click="serviceBtnClicked"> 服务 </v-btn>
+          </v-col>
+          <v-col cols="1">
+            <v-btn x-large app collapse-on-scroll @click="settingsBtnClicked"> 设置 </v-btn>
           </v-col>
           <v-col cols="1">
             <v-btn x-large app collapse-on-scroll to="/login"> 登陆 </v-btn>
@@ -86,6 +92,33 @@ export default {
         alert('您尚未登陆')
       }
     },
+
+    async mapBtnClicked() {
+      const Token = this.$store.getters.TokenStored;
+      if (Token) {
+        await this.$router.push({path:'/map_home'})
+      } else {
+        alert('请先登录')
+      }
+    },
+
+    async serviceBtnClicked() {
+      const Token = this.$store.getters.TokenStored;
+      if (Token) {
+        await this.$router.push({path:'/service_home'})
+      } else {
+        alert('请先登录')
+      }
+    },
+
+    async settingsBtnClicked() {
+      const Token = this.$store.getters.TokenStored;
+      if (Token) {
+        await this.$router.push({path:'/settings_home'})
+      } else {
+        alert('请先登录')
+      }
+    }
   },
 };
 </script>

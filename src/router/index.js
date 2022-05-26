@@ -6,6 +6,9 @@ import register from "@/views/register"
 import login from "@/views/login"
 import forget_pswd from "@/views/forget_pswd";
 import user_info from "@/views/user_info";
+import map_home from "@/views/map_home";
+import service_home from "@/views/service_home";
+import settings_home from "@/views/settings_home";
 
 Vue.use(VueRouter)
 
@@ -41,6 +44,21 @@ const routes = [
                 path: 'user_info',
                 name: 'user_info',
                 component: user_info
+            },
+            {
+                path: 'map_home',
+                name: 'map_home',
+                component: map_home
+            },
+            {
+                path: 'service_home',
+                name: 'service_home',
+                component: service_home
+            },
+            {
+                path: 'settings_home',
+                name: 'settings_home',
+                component: settings_home
             },
         ]
     },
