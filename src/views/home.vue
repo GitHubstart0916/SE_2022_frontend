@@ -40,16 +40,16 @@
             <v-btn x-large app collapse-on-scroll @click="settingsBtnClicked"> 设置 </v-btn>
           </v-col>
           <v-col cols="1">
-            <v-btn x-large app collapse-on-scroll to="/login"> 登陆 </v-btn>
+            <v-btn x-large app collapse-on-scroll to="/login"> 登录 </v-btn>
           </v-col>
           <v-col cols="1">
             <v-btn x-large app collapse-on-scroll @click="myLogout" to="/login"> 注销 </v-btn>
           </v-col>
           <v-col cols="2">
             <v-card color="#385F73" style="cursor:pointer">
-              <v-card-subtitle>
+              <v-card-subtitle @click="userBtnClicked">
                 <v-icon>mdi-account</v-icon>
-                {{ $store.getters.TokenStored ? '已经登录' : '您尚未登陆' }}
+                {{ $store.getters.TokenStored ? '已经登录' : '您尚未登录' }}
               </v-card-subtitle>
             </v-card>
           </v-col>
@@ -117,6 +117,15 @@ export default {
         await this.$router.push({path:'/settings_home'})
       } else {
         alert('请先登录')
+      }
+    },
+
+    async userBtnClicked() {
+      const Token = this.$store.getters.TokenStored;
+      if (Token) {
+        await this.$router.push({path:'/user_info'})
+      } else {
+        await this.$router.push({path:'/login'})
       }
     }
   },
