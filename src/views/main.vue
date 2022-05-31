@@ -38,6 +38,11 @@ export default {
       let res = await getUserID()
       this.userid = res.data.id
     }
+  },
+
+  created: async function () {
+    let create_res = await getUserID()
+    this.userid = create_res.data.id
   }
 }
 </script>

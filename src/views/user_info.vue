@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-row justify="center" style="height: 150px">
+    <v-row justify="center" style="height: 0">
       <v-col md="6">
         <v-text-field
             v-model="username"
@@ -9,7 +9,7 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-row justify="center" style="height: 150px">
+    <v-row justify="center" style="height: 10px">
       <v-col md="6">
         <v-text-field
             v-model="nickname"
@@ -18,7 +18,7 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-row justify="center" style="height: 150px">
+    <v-row justify="center" style="height: 10px">
       <v-col md="6">
         <v-text-field
             v-model="mail"
@@ -27,7 +27,7 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-row justify="center" style="height: 150px">
+    <v-row justify="center" style="height: 10px">
       <v-col md="6">
         <v-text-field
             v-model="phone_number"
@@ -36,7 +36,7 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-row justify="center" style="height: 150px">
+    <v-row justify="center" style="height: 10px">
       <v-col md="6">
         <v-text-field
             v-model="birthday"
@@ -64,8 +64,8 @@ export default {
     }
   },
 
-  // created() {
-  //   let res = getUserInfo()
+  // created: async function () {
+  //   let res = await getUserInfo()
   //   let user_data = res.data
   //   this.username = user_data.username
   //   this.nickname = user_data.nickname
