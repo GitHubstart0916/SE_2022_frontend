@@ -22,7 +22,7 @@
 
     <v-row justify="center" class="row_of_btn">
       <v-card-actions>
-        <v-btn @click="newMap">
+        <v-btn to="/create_map">
           新建地图
         </v-btn>
       </v-card-actions>
