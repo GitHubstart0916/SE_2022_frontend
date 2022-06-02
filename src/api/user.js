@@ -8,6 +8,8 @@ const api_urls = {
     get_user_info: '/user/get-info',
     forget_password: '/user/forget-password',
     reset_password: '/user/reset-password',
+    create_map: '/map/create-map',
+    finished_create_map: '', // TODO: 结束建图
 }
 
 export async function register(body) {
@@ -61,6 +63,22 @@ export async function get_verification_code(body) {
 export async function reset_password(body) {
     return await request({
         url: api_urls.reset_password,
+        body: body,
+        method: 'post',
+    })
+}
+
+export async function start_create_map() {
+    return await request({
+        url: api_urls.create_map,
+        params: {},
+        method: 'get',
+    })
+}
+
+export async function finish_create_map(body) {
+    return await request({
+        url: api_urls.finished_create_map,
         body: body,
         method: 'post',
     })

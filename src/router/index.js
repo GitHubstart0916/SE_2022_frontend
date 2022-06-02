@@ -9,6 +9,7 @@ import user_info from "@/views/user_info";
 import map_home from "@/views/map_home";
 import service_home from "@/views/service_home";
 import settings_home from "@/views/settings_home";
+import create_map from "@/views/create_map";
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,11 @@ const routes = [
                 path: 'settings_home',
                 name: 'settings_home',
                 component: settings_home
+            },
+            {
+                path: 'create_map',
+                name: 'create_map',
+                component: create_map
             },
         ]
     },
