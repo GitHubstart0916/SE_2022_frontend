@@ -5,7 +5,7 @@ const api_urls = {
     user_login: '/user/login',
     user_logout: '/user/logout',
     get_user_id: '/test/get-user-id',
-    get_user_info: '/user/get_user_info',
+    get_user_info: '/user/get-user-info',
     forget_password: '/user/forget-password',
     reset_password: '/user/reset-password',
     create_map: '/map/create-map',
@@ -48,8 +48,8 @@ export async function getUserID() {
 export async function getUserInfo() {
     return await request({
         url: api_urls.get_user_info,
-        params: {},
-        method: 'get',
+        body: {},
+        method: 'post',
     })
 }
 
