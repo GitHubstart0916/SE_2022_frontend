@@ -16,6 +16,7 @@
             label="选择所在地图"
             dense
             v-model="selected_map"
+            v-on:change="map_change"
         ></v-select>
       </v-col>
     </v-row>
@@ -31,13 +32,20 @@
 </template>
 
 <script>
+import axios from "axios";
+import {get_map_navi_item} from "@/api/user";
+
 export default {
   name: "service_home",
 
   data() {
     return {
-      maps : [],
-      selected_map: null
+      maps: [],
+      navi_list: [],
+      item_list: [],
+      selected_map: null,
+      selected_navi: null,
+      selected_item: null,
     }
   },
 
@@ -45,9 +53,21 @@ export default {
     async startService() {
       if (this.selected_map == null) {
         alert("请选择地图！")
+      } else if (this.selected_navi == null) {
+        alert("请选择航点！")
+      } else if (this.selected_item == null) {
+        alert("请选择物品！")
       } else {
-
+        //TODO: 向后端发送开始服务指令
       }
+    },
+
+    async map_change() {
+      let res = await get_map_navi_item({
+        //TODO: 向后端传地图的主键
+      })
+      this.navi_list = res.data.navi_list
+      this.item_list = res.data.item_list
     }
   }
 }

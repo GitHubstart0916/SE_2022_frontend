@@ -12,8 +12,8 @@
     <v-row justify="center" style="height: 10px">
       <v-col md="6">
         <v-text-field
-            v-model="nickname"
-            label="昵称"
+            v-model="id"
+            label="编号"
             readonly
         ></v-text-field>
       </v-col>
@@ -57,22 +57,22 @@ export default {
   data() {
     return {
       username: '114',
-      nickname: '514',
+      id: 514,
       mail: '1919810@buaa.edu.cn',
       phone_number: '',
       birthday: null,
     }
   },
 
-  // created: async function () {
-  //   let res = await getUserInfo()
-  //   let user_data = res.data
-  //   this.username = user_data.username
-  //   this.nickname = user_data.nickname
-  //   this.mail = user_data.userEmail
-  //   this.phone_number = user_data.phone
-  //   this.birthday = user_data.date
-  // }
+  created: async function () {
+    let res = await getUserInfo()
+    let user_data = res.data
+    this.username = user_data.userName
+    this.id = user_data.id
+    this.mail = user_data.email
+    // this.phone_number = user_data.phone
+    // this.birthday = user_data.date
+  }
 }
 </script>
 
