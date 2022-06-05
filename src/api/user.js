@@ -9,8 +9,9 @@ const api_urls = {
     forget_password: '/user/forget-password',
     reset_password: '/user/reset-password',
     create_map: '/map/create-map',
-    finished_create_map: '', // TODO: 结束建图
-    get_map_navi_item_url: '', // TODO: 请求地图的航点和物品
+    finished_create_map: '', // TODO: 结束建图URL
+    get_map_navi_item_url: '', // TODO: 请求地图的航点和物品URL
+    del_map_url: '', // TODO: 删除地图的URL
 }
 
 export async function register(body) {
@@ -88,6 +89,14 @@ export async function finish_create_map(body) {
 export async function get_map_navi_item(body) {
     return await request({
         url: api_urls.get_map_navi_item_url,
+        body: body,
+        method: 'post',
+    })
+}
+
+export async function delete_map(body) {
+    return await request({
+        url: api_urls.del_map_url,
         body: body,
         method: 'post',
     })

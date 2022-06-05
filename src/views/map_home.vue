@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import {delete_map} from "@/api/user";
+
 export default {
   name: "map_home",
 
@@ -73,7 +75,15 @@ export default {
       if (this.selected_item == "") {
         alert("请选择一张地图！")
       } else {
-
+        let res = await delete_map({
+          // TODO: 填写删除地图请求格式
+        })
+        if (res.data.status == 200) {
+          alert("删除成功！")
+          this.$router.go(0) // 刷新页面
+        } else {
+          alert("后端删除失败！")
+        }
       }
     },
   },
