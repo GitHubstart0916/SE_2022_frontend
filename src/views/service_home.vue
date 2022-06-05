@@ -12,7 +12,7 @@
           cols="12"
           sm="6">
         <v-select
-            :items="maps"
+            :items="map_list"
             label="选择所在地图"
             dense
             v-model="selected_map"
@@ -21,9 +21,39 @@
       </v-col>
     </v-row>
 
+    <v-row justify="center" style="height: 10px">
+      <v-col
+          class="d-flex"
+          cols="12"
+          sm="6">
+        <v-select
+            :items="navi_list"
+            label="选择地图航点"
+            dense
+            v-model="selected_navi"
+            v-on:change="map_change"
+        ></v-select>
+      </v-col>
+    </v-row>
+
+    <v-row justify="center" style="height: 10px">
+      <v-col
+          class="d-flex"
+          cols="12"
+          sm="6">
+        <v-select
+            :items="item_list"
+            label="选择物品"
+            dense
+            v-model="selected_item"
+            v-on:change="map_change"
+        ></v-select>
+      </v-col>
+    </v-row>
+
     <v-row justify="center" class="row_of_btn">
       <v-card-actions>
-        <v-btn @click>
+        <v-btn @click="startService">
           开始服务
         </v-btn>
       </v-card-actions>
@@ -40,7 +70,7 @@ export default {
 
   data() {
     return {
-      maps: [],
+      map_list: [],
       navi_list: [],
       item_list: [],
       selected_map: null,
@@ -69,6 +99,10 @@ export default {
       this.navi_list = res.data.navi_list
       this.item_list = res.data.item_list
     }
+  }
+
+  created: async function () {
+    // TODO: 获取地图列表
   }
 }
 </script>
