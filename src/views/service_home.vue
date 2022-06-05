@@ -99,7 +99,7 @@ export default {
       this.navi_list = res.data.navi_list
       this.item_list = res.data.item_list
     }
-  }
+  },
 
   created: async function () {
     // TODO: 获取地图列表
