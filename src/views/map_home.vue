@@ -22,7 +22,7 @@
 
     <v-row justify="center" class="row_of_btn">
       <v-card-actions>
-        <v-btn to="/create_map">
+        <v-btn @click="newMap">
           新建地图
         </v-btn>
       </v-card-actions>
@@ -53,7 +53,12 @@ export default {
 
   methods: {
     async newMap() {
-
+      // TODO: 向后端发送开始建图指令，等待返回值
+      if (/* 开启建图失败 */1==2) {
+        alert("机器人开启建图失败！请检查！")
+      } else {
+        await this.$router.push({path: '/create_map'});
+      }
     },
 
     async openMap() {
