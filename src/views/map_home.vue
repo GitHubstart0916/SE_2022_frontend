@@ -12,7 +12,7 @@
           cols="12"
           sm="6">
         <v-select
-            :items="items"
+            :items="map_list"
             label="选择地图"
             dense
             v-model="selected_item"
@@ -46,14 +46,14 @@
 </template>
 
 <script>
-import {delete_map} from "@/api/user";
+import {delete_map, get_map_list} from "@/api/user";
 
 export default {
   name: "map_home",
 
   data() {
     return {
-      items: null,
+      map_list: null,
       selected_item: "",
     }
   },
@@ -99,6 +99,8 @@ export default {
 
   created: async function () {
     // TODO: 获取地图列表
+    let res = await get_map_list()
+    this.map_list = res.data.map_list
   }
 }
 </script>
