@@ -69,13 +69,13 @@ export default {
   },
 
   methods: {
-    toHome() {
+    async toHome() {
       this.$router.push("/main").catch((error) => {
         console.log('已在主页')
       });
     },
 
-    add() {
+    async add() {
       //TODO:
       if (1) {
         alert("建立航点成功")
@@ -84,9 +84,10 @@ export default {
       }
     },
 
-    doAddNode() {
+    async doAddNode() {
       this.dialog = false
       //TODO:
+      await this.$router.push({path: '/main'});
     }
 
   }
