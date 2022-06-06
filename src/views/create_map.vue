@@ -35,6 +35,7 @@
                     label="地图名"
                     required
                     v-model="map_name"
+                    :rules="[rules.mapLenRequire]"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -73,6 +74,9 @@ export default {
       create_success: null,
       dialog: false,
       map_name: "",
+      rules: {
+        mapLenRequire: value => value.length <= 50 || '地图名长度过长',
+      }
     }
   },
 
@@ -80,13 +84,15 @@ export default {
     async finishCreateMap() {
       if (this.map_name == "") {
         alert("地图名不能为空！")
+      } else if (this.map_name.length > 50) {
+        alert("地图名长度过长！")
       } else {
         let res = await finish_create_map({Name: this.map_name})
         this.dialog = false
         if (res.data.status == 200) {
           alert("建图成功！")
           await this.$router.push({path: '/map_home'});
-        } else if(res.data.status == 400) {
+        } else if (res.data.status == 400) {
           alert("命名重复！请重新命名！")
         } else {
           alert("发生其它错误，本次建图失败，请退出建图页面后重新进入建图。")

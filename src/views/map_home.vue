@@ -61,7 +61,7 @@ export default {
   methods: {
     async newMap() {
       // TODO: 向后端发送开始建图指令，等待返回值
-      if (/* 开启建图失败 */1==2) {
+      if (/* 开启建图失败 */1 == 2) {
         alert("机器人开启建图失败！请检查！")
       } else {
         await this.$router.push({path: '/create_map'});
@@ -93,7 +93,13 @@ export default {
     },
 
     async addNode() {
-      await this.$router.push({path: '/create_node'});
+      if (this.selected_item == "") {
+        alert("请选择一张地图！")
+      } else {
+        // TODO: 向后端发送进入标注指令
+
+        await this.$router.push({path: '/create_node'});
+      }
     }
   },
 
