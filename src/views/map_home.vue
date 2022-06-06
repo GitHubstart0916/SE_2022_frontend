@@ -36,6 +36,11 @@
           删除地图
         </v-btn>
       </v-card-actions>
+      <v-card-actions>
+        <v-btn @click="addNode">
+          添加标注
+        </v-btn>
+      </v-card-actions>
     </v-row>
   </v-app>
 </template>
@@ -86,6 +91,10 @@ export default {
         }
       }
     },
+
+    async addNode() {
+      await this.$router.push({path: '/create_node'});
+    }
   },
 
   created: async function () {
