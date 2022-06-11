@@ -57,11 +57,11 @@ const routes = [
                 name: 'service_home',
                 component: service_home
             },
-            {
-                path: 'settings_home',
-                name: 'settings_home',
-                component: settings_home
-            },
+            // {
+            //     path: 'settings_home',
+            //     name: 'settings_home',
+            //     component: settings_home
+            // },
             {
                 path: 'create_map',
                 name: 'create_map',

@@ -37,9 +37,6 @@
             <v-btn x-large app collapse-on-scroll @click="serviceBtnClicked"> 服务 </v-btn>
           </v-col>
           <v-col cols="1">
-            <v-btn x-large app collapse-on-scroll @click="settingsBtnClicked"> 设置 </v-btn>
-          </v-col>
-          <v-col cols="1">
             <v-btn x-large app collapse-on-scroll to="/login"> 登录 </v-btn>
           </v-col>
           <v-col cols="1">
@@ -111,14 +108,14 @@ export default {
       }
     },
 
-    async settingsBtnClicked() {
-      const Token = this.$store.getters.TokenStored;
-      if (Token) {
-        await this.$router.push({path:'/settings_home'})
-      } else {
-        alert('请先登录')
-      }
-    },
+    // async settingsBtnClicked() {
+    //   const Token = this.$store.getters.TokenStored;
+    //   if (Token) {
+    //     await this.$router.push({path:'/settings_home'})
+    //   } else {
+    //     alert('请先登录')
+    //   }
+    // },
 
     async userBtnClicked() {
       const Token = this.$store.getters.TokenStored;
