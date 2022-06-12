@@ -5,7 +5,7 @@ const api_urls = {
     get_map_list: '/map/get-map-list',
 }
 
-
+//
 export async function get_map_list() {
     return await request({
         url: api_urls.get_map_list,
