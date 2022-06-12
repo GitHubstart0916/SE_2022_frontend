@@ -64,7 +64,6 @@
 </template>
 
 <script>
-import {finish_create_map} from "@/api/user";
 
 export default {
   name: "create_map",

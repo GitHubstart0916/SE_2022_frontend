@@ -23,13 +23,14 @@ export async function request(options) {
             },
         });
     } catch (e) {
+        console.log('has error')
         console.log(e)
         throw new Error(e)
     }
     if (response.status !== 200) {
         console.log('has error')
         switch(response.status){
-            case 400:
+            case 404:
                 handleException(response)
                 break
             case 401:

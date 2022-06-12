@@ -6,6 +6,15 @@
       </h1>
     </v-row>
 
+    <v-row justify="center" align="center">
+      <v-img
+          :key="cnt"
+          :src="image_url"
+          max-height="400"
+          max-width="400"
+      ></v-img>
+    </v-row>
+
     <v-row justify="center" style="height: 10px">
       <v-col
           class="d-flex"
@@ -37,7 +46,7 @@
         </v-btn>
       </v-card-actions>
       <v-card-actions>
-        <v-btn @click="addNode">
+        <v-btn @click="getAllMap">
           添加标注
         </v-btn>
       </v-card-actions>
@@ -46,16 +55,28 @@
 </template>
 
 <script>
-import {delete_map, get_map_list} from "@/api/user";
+import {get_map_list, get_map_url} from "@/api/map";
+import {getUserID} from "@/api/user";
 
 export default {
   name: "map_home",
+
+  // created() {
+  //   this.getAllMap()
+  // },
 
   data() {
     return {
       map_list: null,
       selected_item: "",
+      image_url: "",
+      hasImage: false,
+      cnt: 0
     }
+  },
+
+  created() {
+    this.getAllMap()
   },
 
   methods: {
@@ -72,7 +93,12 @@ export default {
       if (this.selected_item == "") {
         alert("请选择一张地图！")
       } else {
-
+        let res = await get_map_url({
+          mapName: this.selected_item
+        })
+        this.image_url = res.data.url
+        console.log(this.image_url)
+        this.cnt = this.cnt + 1
       }
     },
 
@@ -100,14 +126,16 @@ export default {
 
         await this.$router.push({path: '/create_node'});
       }
+    },
+
+    async getAllMap() {
+      let vm = this
+      let res = await get_map_list()
+      console.log(res.data)
+      this.map_list = res.data.images
     }
   },
 
-  created: async function () {
-    // TODO: 获取地图列表
-    let res = await get_map_list()
-    this.map_list = res.data.map_list
-  }
 }
 </script>
 

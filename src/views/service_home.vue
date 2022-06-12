@@ -63,7 +63,6 @@
 
 <script>
 import axios from "axios";
-import {get_map_navi_item} from "@/api/user";
 
 export default {
   name: "service_home",

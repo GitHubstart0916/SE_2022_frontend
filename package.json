@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "serve-dev": "env VUE_APP_API_URL=http://101.43.145.90:8080 VERSION=DevServe vue-cli-service serve",
-    "serve-test": "cross-env VUE_APP_API_URL=http://101.43.145.90:8080 VERSION=DevServe vue-cli-service serve"
+    "serve-test": "cross-env VUE_APP_API_URL=http://101.43.145.90:8080 VERSION=DevServe vue-cli-service serve",
+    "serve-dev-local": "env VUE_APP_API_URL=http://127.0.0.1:8114 VERSION=LocalServe vue-cli-service serve"
   },
   "dependencies": {
     "axios": "^0.27.2",
