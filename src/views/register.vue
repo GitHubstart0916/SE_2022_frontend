@@ -210,6 +210,7 @@ export default {
       let res = await register({
         username: vm.username,
         password: vm.password,
+        email: vm.userEmail,
       });
       console.log(res.data)
       if (res.data.code == 0) {

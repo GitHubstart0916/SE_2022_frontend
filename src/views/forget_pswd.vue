@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import {get_verification_code} from "@/api/user";
+import {get_verification_code, reset_password} from "@/api/user";
 
 export default {
   name: "forget_pswd",
@@ -105,13 +105,13 @@ export default {
       }
       // TODO: 向后端发送用户名，请求发送验证码
       let res = get_verification_code({
-        UserName: this.username,
+        userId: this.username,
       })
-      if (res.data.code == 0) {
-        alert("success");
-        await this.$router.push({path: '/login'});
-      }
-      alert("你在演我")
+      alert("验证码发送成功")
+      // if (res.data.code == 0) {
+      //   alert("success");
+      //   await this.$router.push({path: '/login'});
+      // }
     },
 
     async forgetPassword() {
@@ -133,10 +133,18 @@ export default {
         return
       }
       let res = await reset_password({
-        Token: vm.veri_code,
-        NewPassword: vm.new_pswd,
+        token: vm.veri_code,
+        name: vm.username,
+        password: vm.new_pswd,
       })
+      console.log("reset_pass_end")
       // TODO: 向后端打包所有信息并发送
+      if (res.data.message === "fail") {
+        alert("验证码错误")
+      } else {
+        alert("修改成功")
+        await this.$router.push({path: '/login'});
+      }
     }
   },
 }

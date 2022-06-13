@@ -1,22 +1,29 @@
 <template>
   <v-app>
-    <h1>
-      CI-Test-Pass
-    </h1>
-    <v-text-field
-        v-model="userid"
-        label="用户id"
-        readonly
-    ></v-text-field>
-    <v-btn
-        outlined
-        rounded
-        text
-        color="deep-purple lighten-2"
-        @click="getUsrId"
-    >
-      获取当前ID
-    </v-btn>
+<!--    <h1>-->
+<!--      CI-Test-Pass-->
+<!--    </h1>-->
+<!--    <v-text-field-->
+<!--        v-model="userid"-->
+<!--        label="用户id"-->
+<!--        readonly-->
+<!--    ></v-text-field>-->
+<!--    <v-btn-->
+<!--        outlined-->
+<!--        rounded-->
+<!--        text-->
+<!--        color="deep-purple lighten-2"-->
+<!--        @click="getUsrId"-->
+<!--    >-->
+<!--      获取当前ID-->
+<!--    </v-btn>-->
+    <v-row justify="center" align="center">
+      <v-img
+          src="@/assets/2.jpg"
+          max-height="400"
+          max-width="400"
+      ></v-img>
+    </v-row>
   </v-app>
 </template>
 
