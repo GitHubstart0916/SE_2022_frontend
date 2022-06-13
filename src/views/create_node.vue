@@ -14,15 +14,17 @@
           max-width="290"
       >
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-              color="primary"
-              dark
-              v-bind="attrs"
-              v-on="on"
-              @click="add"
-          >
-            请移动机器人至标注点后点击
-          </v-btn>
+          <v-row class="row_of_btn" justify="center" align="center">
+            <v-btn
+                color="primary"
+                dark
+                v-bind="attrs"
+                v-on="on"
+                @click="add"
+            >
+              请移动机器人至标注点后点击
+            </v-btn>
+          </v-row>
         </template>
         <v-card>
           <v-col md="12" align-self="center">
@@ -54,10 +56,24 @@
         </v-card>
       </v-dialog>
     </v-row>
+
+    <v-row class="row_of_btn" justify="center" align="center">
+      <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+          @click="finish"
+      >
+        结束标注
+      </v-btn>
+    </v-row>
   </v-app>
 </template>
 
 <script>
+import {add_node, finish_mark} from "@/api/ros";
+
 export default {
   name: "create_node",
 
@@ -67,6 +83,7 @@ export default {
       node_name: '',
     };
   },
+
 
   methods: {
     async toHome() {
@@ -79,6 +96,7 @@ export default {
       //TODO:
       if (1) {
         alert("建立航点成功")
+
       } else {
         location.reload();
       }
@@ -87,6 +105,21 @@ export default {
     async doAddNode() {
       this.dialog = false
       //TODO:
+      //await this.$router.push({path: '/main'});
+
+      const MapName = this.$store.getters.MapName;
+      await add_node({
+        mapName: MapName,
+        nodeName: this.node_name,
+      })
+    },
+
+    async finish() {
+      const MapName = this.$store.getters.MapName;
+      await finish_mark({
+        mapName: MapName
+      })
+      this.$store.commit("removeMapName")
       await this.$router.push({path: '/main'});
     }
 

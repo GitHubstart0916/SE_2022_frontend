@@ -65,6 +65,9 @@
 
 <script>
 
+import {save_map, trans} from "@/api/ros";
+import {sleep} from "@/api/user";
+
 export default {
   name: "create_map",
 
@@ -79,23 +82,29 @@ export default {
     }
   },
 
+
+
   methods: {
+
     async finishCreateMap() {
       if (this.map_name == "") {
         alert("地图名不能为空！")
       } else if (this.map_name.length > 50) {
         alert("地图名长度过长！")
       } else {
-        let res = await finish_create_map({Name: this.map_name})
+        let res = await save_map({
+          name: this.map_name,
+        })
+        console.log(res.status)
+        await sleep(3000);
+        res = await trans({
+          name: this.map_name,
+        })
+        console.log(res.status)
         this.dialog = false
-        if (res.data.status == 200) {
-          alert("建图成功！")
-          await this.$router.push({path: '/map_home'});
-        } else if (res.data.status == 400) {
-          alert("命名重复！请重新命名！")
-        } else {
-          alert("发生其它错误，本次建图失败，请退出建图页面后重新进入建图。")
-          await this.$router.push({path: '/map_home'});
+        if (res.status === 200) {
+          alert("建图成功")
+          await this.$router.push({path: '/main'});
         }
       }
 

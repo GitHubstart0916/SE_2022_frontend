@@ -46,7 +46,7 @@
         </v-btn>
       </v-card-actions>
       <v-card-actions>
-        <v-btn @click="getAllMap">
+        <v-btn @click="addNode">
           添加标注
         </v-btn>
       </v-card-actions>
@@ -57,6 +57,7 @@
 <script>
 import {get_map_list, get_map_url} from "@/api/map";
 import {getUserID} from "@/api/user";
+import {begin_mark, creat_map} from "@/api/ros";
 
 export default {
   name: "map_home",
@@ -86,6 +87,7 @@ export default {
         alert("机器人开启建图失败！请检查！")
       } else {
         await this.$router.push({path: '/create_map'});
+        await creat_map()
       }
     },
 
@@ -123,8 +125,12 @@ export default {
         alert("请选择一张地图！")
       } else {
         // TODO: 向后端发送进入标注指令
+        this.$store.commit('setMapName', this.selected_item)
 
         await this.$router.push({path: '/create_node'});
+        await begin_mark({
+          mapName: this.selected_item,
+        })
       }
     },
 

@@ -71,3 +71,6 @@ export async function reset_password(body) {
     })
 }
 
+export function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}

@@ -6,6 +6,7 @@ const user = {
             username: sessionStorage.getItem('username'),
             id: sessionStorage.getItem('id'),
         },
+        mapName: sessionStorage.getItem('mapName')
     },
     mutations: {
         setUser (state, info) {
@@ -18,6 +19,14 @@ const user = {
             sessionStorage.setItem('token', tokenIn)
             localStorage.setItem('token', tokenIn)
         },
+        setMapName (state, mapName) {
+            state.mapName = mapName
+            sessionStorage.setItem('mapName', mapName)
+        },
+        removeMapName (state) {
+            sessionStorage.removeItem('mapName')
+            state.mapName = ""
+        },
         logout (state) {
             state.token = ''
             state.userInfo = {
@@ -27,6 +36,7 @@ const user = {
             sessionStorage.removeItem('token')
             sessionStorage.removeItem('username')
             sessionStorage.removeItem('id')
+            sessionStorage.removeItem('mapName')
 
             localStorage.removeItem('token')
         },
@@ -35,6 +45,7 @@ const user = {
         TokenStored: state => state.token,
         Name: state => state.userInfo.name,
         Id: state => state.userInfo.id,
+        MapName: state => state.mapName,
     },
 }
 
