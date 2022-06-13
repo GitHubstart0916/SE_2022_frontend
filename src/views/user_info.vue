@@ -27,29 +27,29 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-row justify="center" style="height: 10px">
-      <v-col md="6">
-        <v-text-field
-            v-model="phone_number"
-            label="电话号码"
-            readonly
-        ></v-text-field>
-      </v-col>
-    </v-row>
-    <v-row justify="center" style="height: 10px">
-      <v-col md="6">
-        <v-text-field
-            v-model="birthday"
-            label="生日"
-            readonly
-        ></v-text-field>
-      </v-col>
-    </v-row>
+<!--    <v-row justify="center" style="height: 10px">-->
+<!--      <v-col md="6">-->
+<!--        <v-text-field-->
+<!--            v-model="phone_number"-->
+<!--            label="电话号码"-->
+<!--            readonly-->
+<!--        ></v-text-field>-->
+<!--      </v-col>-->
+<!--    </v-row>-->
+<!--    <v-row justify="center" style="height: 10px">-->
+<!--      <v-col md="6">-->
+<!--        <v-text-field-->
+<!--            v-model="birthday"-->
+<!--            label="生日"-->
+<!--            readonly-->
+<!--        ></v-text-field>-->
+<!--      </v-col>-->
+<!--    </v-row>-->
   </v-app>
 </template>
 
 <script>
-import {getUserInfo} from "@/api/user";
+import {getUserInfo, login} from "@/api/user";
 
 export default {
   name: "user_info",
@@ -64,15 +64,21 @@ export default {
     }
   },
 
-  created: async function () {
-    let res = await getUserInfo()
-    let user_data = res.data
-    this.username = user_data.userName
-    this.id = user_data.id
-    this.mail = user_data.email
-    // this.phone_number = user_data.phone
-    // this.birthday = user_data.date
-  }
+  created() {
+    this.get_info()
+  },
+
+  methods: {
+    async get_info() {
+      let res = await getUserInfo()
+      console.log(res)
+      this.username = res.data.UserName
+      this.id = res.data.Id
+      this.mail = res.data.Email
+      // this.phone_number = user_data.phone
+      // this.birthday = user_data.date
+    }
+  },
 }
 </script>
 

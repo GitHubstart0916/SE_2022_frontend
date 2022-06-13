@@ -118,6 +118,8 @@ export default {
 
     async finish() {
       await finish_serve()
+
+      await this.$router.push({path: '/main'});
     },
 
     async map_change() {

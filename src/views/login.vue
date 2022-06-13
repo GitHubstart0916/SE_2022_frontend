@@ -5,7 +5,7 @@
       <v-col md = "6">
         <v-card elevation="4" outlined shaped>
           <p class="text-center font-italic" style="margin-top: 2rem; font-size:25px">
-            Electric123123
+            Electric
           </p>
 
           <v-form class="form">
